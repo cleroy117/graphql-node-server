@@ -56,7 +56,6 @@ var coursesData = [
 ];
 
 // Queries
-
 const getCourse = function (args) {
   const id = args.id;
   return coursesData.filter((course) => {
@@ -83,18 +82,8 @@ const getCourses = function (args) {
   }
 };
 
-// {"title": "The Weird Parts"}
 
 // Mutations
-{
-  "input": {
-    "title": "Dan",
-    "author": "Paris",
-    "description": "blabla",
-    "topic": "mon blabla",
-    "url": "www.something.com"
-  }
-}
 
 const updateCourseTopic = function ({ id, topic }) {
   coursesData.map((course) => {
