@@ -14,7 +14,7 @@ type Query {
 },
 type Mutation {
   updateCourseTopic(id: Int!, topic: String!): Course
-  addCourse(inputCourse: InputCourse): Course
+  addCourse(inputCourse: InputCourse!): Course
 },
 type Course {
     id: Int
@@ -83,7 +83,18 @@ const getCourses = function (args) {
   }
 };
 
+// {"title": "The Weird Parts"}
+
 // Mutations
+{
+  "input": {
+    "title": "Dan",
+    "author": "Paris",
+    "description": "blabla",
+    "topic": "mon blabla",
+    "url": "www.something.com"
+  }
+}
 
 const updateCourseTopic = function ({ id, topic }) {
   coursesData.map((course) => {
@@ -95,18 +106,8 @@ const updateCourseTopic = function ({ id, topic }) {
   return coursesData.filter((course) => course.id === id)[0];
 };
 
-const addCourse = function ({ title, author, description, topic, url }) {
-  const id = crypto.randomBytes(10).toString("hex");
-  // courses[id] = course;
-  newCourse = {
-    id: id,
-    title: title,
-    author: author,
-    description: description,
-    topic: topic,
-    url: url,
-  };
-  coursesData.push(newCourse);
+const addCourse = function ({ inputCourse }) {
+  coursesData.push(inputCourse);
   return coursesData;
 };
 
